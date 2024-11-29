@@ -1,0 +1,17 @@
+{
+  "name": "factorio2mqtt",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "alu",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^4.0.1",
+    "mqtt": "^5.10.3"
+  }
+}

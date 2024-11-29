@@ -1,0 +1,9 @@
+{
+  "name": "factorio2mqtt",
+  "version": "1.0.0",
+  "title": "Factorio2MQTT",
+  "author": "alu",
+  "factorio_version": "2.0",
+  "dependencies": ["base >= 2.0"],
+  "description": "Publish Factorio events to a MQTT queue."
+}
