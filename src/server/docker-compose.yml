@@ -1,0 +1,23 @@
+services:
+  factorio2mqtt:
+    image: factorio2mqtt:latest
+    build: .
+    env_file:
+      - .env
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - MQTT_HOST=${MQTT_HOST}
+      - MQTT_USERNAME=${MQTT_USERNAME}
+      - MQTT_PASSWORD=${MQTT_PASSWORD}
+      - LOG_TARGETS=info
+    volumes:
+      - type: bind
+        source: ${SCRIPT_OUTPUT_PATH:-/opt/factorio/script-output/}
+        target: /script-output
+    develop:
+      watch:
+        - action: sync+restart
+          path: index.js
+          target: /app/index.js
+        - action: rebuild
+          path: package.json

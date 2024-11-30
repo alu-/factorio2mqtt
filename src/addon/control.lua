@@ -1,34 +1,54 @@
+-- @todo verify that mod works in multiplayer
+-- @todo check that mod is compatible with other mods that are using custom events
+require("utils")
+
 local lookup_table = {}
 for k, v in pairs(defines.events) do
     lookup_table[v] = k
 end
 
--- cleanup
--- helpers.remove_path(path)
-
-local count = 0
-local function get_file_name()
-    count = count + 1
-    return script.mod_name .. "_" .. count .. ".json"
+local function send(event)
+    event.id = event.name
+    event.name = lookup_table[event.id]
+    helpers.write_file(
+        get_file_name(),
+        helpers.table_to_json(event),
+        false,
+        (game.is_multiplayer() and 0 or 1)
+    )
 end
 
-for k, v in pairs(defines.events) do
-    if k ~= "on_tick" and k ~= "on_entity_damaged" then
-        script.on_event(
-                k,
-                function(event)
-                    event.id = event.name
-                    event.name = lookup_table[event.id]
+local enabled_events = {}
+local function load_enabled_events()
+    local event_settings = settings.global["factorio2mqtt-event-list"].value
+    if event_settings == "" then
+        for k, v in pairs(defines.events) do
+            table.insert(enabled_events, k)
+        end
+    else
+        for i in string.gmatch(event_settings, '([^, ]+)') do
+            table.insert(enabled_events, i)
+        end
+    end
+end
+load_enabled_events()
+local enabled = settings.global["factorio2mqtt-enabled"].value
 
-                    log(serpent.block(event))
-                    helpers.write_file(
-                            get_file_name(),
-                            helpers.table_to_json(event),
-                            false,
-                            (game.is_multiplayer() and 0 or 1)
-                    )
-                end
-        )
+local function on_event(event)
+    if event.name == defines.events.on_runtime_mod_setting_changed then
+        if event.setting == "factorio2mqtt-event-list" then
+            enabled_events = {}
+            load_enabled_events()
+        elseif event.setting == "factorio2mqtt-enabled" then
+            enabled = settings.global["factorio2mqtt-enabled"].value
+        end
+    end
+    
+    if enabled and has_value(enabled_events, lookup_table[event.name]) then
+        send(event)
     end
 end
 
+for event_name, _ in pairs(defines.events) do
+    script.on_event(event_name, on_event)
+end
