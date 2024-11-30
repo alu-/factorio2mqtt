@@ -29,7 +29,7 @@ You need to provide it with a few environment variables and a bind mount to make
 
 The docker image uses polling instead of file system events as this works better in a container. Should you want more performance you can try to turn it off by supplying *CHOKIDAR_USEPOLLING=false* as an environment variable.
 
-There is also a *docker-compose.yml* and *.env* file [in Github](https://github.com/alu-/factorio2mqtt/tree/main/src/server). If you don't have an MQTT server already than this compose file is an excellent place to add one.
+There is also a *docker-compose.yml* and *.env* file both [in Github](https://github.com/alu-/factorio2mqtt/tree/main/src/server) and in the mod's zipfile. If you don't have an MQTT server already than this compose file is an excellent place to add one.
 
 ### Run the script manually
 
