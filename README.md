@@ -17,10 +17,10 @@ It requires nodejs but there is also a docker image available to use.
 ### Docker image
 
 A docker image containing node and all packages to run the helper script is available at the [Docker hub](https://hub.docker.com/r/alu87/factorio2mqtt).
-You need to provide it with a few environment variables to make it run correctly.
+You need to provide it with a few environment variables and a bind mount to make it run correctly.
 
 > docker run \
-> -e SCRIPT_OUTPUT_PATH=/path/to/factorio/script-output \
+> -v /path/to/factorio/script-output:/script-output \
 > -e MQTT_HOST=mqtt://192.168.1.2:1883 \
 > -e MQTT_USERNAME=username \
 > -e MQTT_PASSWORD=password \
