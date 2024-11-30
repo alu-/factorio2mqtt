@@ -20,7 +20,7 @@ A docker image containing node and all packages to run the helper script is avai
 You need to provide it with a few environment variables to make it run correctly.
 
 > docker run \
-> -e SCRIPT_OUTPUT_PATH=/path/to/factorio/script-output
+> -e SCRIPT_OUTPUT_PATH=/path/to/factorio/script-output \
 > -e MQTT_HOST=mqtt://192.168.1.2:1883 \
 > -e MQTT_USERNAME=username \
 > -e MQTT_PASSWORD=password \
