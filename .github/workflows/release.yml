@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build mod zip
         run: |
-          VERSION=$(jq .version package.json)
+          VERSION=$(jq .version src/server/package.json)
           mkdir factorio2mqtt_"$VERSION"
           ls -la
 
