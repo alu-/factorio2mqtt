@@ -1,0 +1,26 @@
+on:
+  push:
+    tags:
+      - 'v*'
+
+name: Create release
+
+jobs:
+  build:
+    name: Create release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build mod zip
+        run: |
+          VERSION=$(jq .version package.json)
+          mkdir factorio2mqtt_"$VERSION"
+          ls -la
+
+
+      #- name: Release
+        #uses: softprops/action-gh-release@v2
+        #if: startsWith(github.ref, 'refs/tags/')
+        #with:
+          #files: factorio2mqtt_"$VERSION".zip
