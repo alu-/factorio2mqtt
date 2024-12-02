@@ -1,9 +1,7 @@
 on:
   push:
-    branches:
-      - "feature/build-pipeline"
-    #tags:
-    #  - 'v*'
+    tags:
+      - 'v*'
 
 name: Create release
 
