@@ -26,7 +26,8 @@ jobs:
           cp src/server/Dockerfile factorio2mqtt_"$VERSION"/server
           cp src/server/index.js factorio2mqtt_"$VERSION"/server
           cp src/server/package*.json factorio2mqtt_"$VERSION"/server
-          zip factorio2mqtt_"$VERSION"
+          find factorio2mqtt_"$VERSION"
+          zip -r factorio2mqtt_"$VERSION".zip factorio2mqtt_"$VERSION"
           ls -la
 
       #- name: Release
