@@ -1,4 +1,7 @@
 # factorio2mqtt
+![](src/addon/thumbnail.png?raw=true)
+
+https://mods.factorio.com/mod/factorio2mqtt
 
 > Note: This is an early release of this mod so there might be issues
 
