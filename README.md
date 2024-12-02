@@ -27,7 +27,7 @@ You need to provide it with a few environment variables and a bind mount to make
 > -e MQTT_HOST=mqtt://192.168.1.2:1883 \
 > -e MQTT_USERNAME=username \
 > -e MQTT_PASSWORD=password \
-> -d
+> -d \
 > alu87/factorio2mqtt:latest
 
 The docker image uses polling instead of file system events as this works better in a container. Should you want more performance you can try to turn it off by supplying *CHOKIDAR_USEPOLLING=false* as an environment variable.
