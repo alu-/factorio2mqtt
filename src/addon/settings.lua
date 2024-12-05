@@ -4,7 +4,8 @@ data:extend({
         name = "factorio2mqtt-enabled",
         localised_name = "Send events",
         setting_type = "runtime-global",
-        default_value = true
+        default_value = true,
+        order = "a"
     },
     {
         type = "string-setting",
@@ -13,6 +14,15 @@ data:extend({
         localised_description = "Leave blank to send all events (not recommended)",
         setting_type = "runtime-global",
         allow_blank = true,
-        default_value = "on_console_chat, on_entity_damaged, on_entity_died"
-    }
+        default_value = "on_console_chat, on_entity_damaged, on_entity_died",
+        order = "b"
+    },
+    {
+        type = "bool-setting",
+        name = "factorio2mqtt-alerts",
+        localised_name = "Send alerts",
+        setting_type = "runtime-global",
+        default_value = true,
+        order = "c"
+    },
 })
