@@ -1,6 +1,7 @@
 -- @todo verify that mod works in multiplayer
 -- @todo check that mod is compatible with other mods that are using custom events
 require("utils")
+require("serializer")
 
 local lookup_table = {}
 for k, v in pairs(defines.events) do
@@ -12,7 +13,7 @@ local function send(event)
     event.name = lookup_table[event.id]
     helpers.write_file(
         get_file_name(),
-        helpers.table_to_json(event),
+        serialize(event),
         false,
         (game.is_multiplayer() and 0 or 1)
     )
@@ -43,7 +44,7 @@ local function on_event(event)
             enabled = settings.global["factorio2mqtt-enabled"].value
         end
     end
-    
+
     if enabled and has_value(enabled_events, lookup_table[event.name]) then
         send(event)
     end
