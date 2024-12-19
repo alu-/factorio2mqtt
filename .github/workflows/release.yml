@@ -17,7 +17,7 @@ jobs:
         run: |
           VERSION=$(jq -r .version src/server/package.json)
           mkdir factorio2mqtt_"$VERSION"
-          cp src/addon/* factorio2mqtt_"$VERSION"
+          cp src/mod/* factorio2mqtt_"$VERSION"
           mkdir factorio2mqtt_"$VERSION"/server
           cp src/server/.dockerignore factorio2mqtt_"$VERSION"/server
           cp src/server/.env factorio2mqtt_"$VERSION"/server

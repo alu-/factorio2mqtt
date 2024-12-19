@@ -24,7 +24,7 @@ def entities():
     entities = load_entities()
     entity_to_classes = dict((el, get_classes_for_entity(el)) for el in entities)
     output = dict((entity, get_attributes_for_classes(classes)) for entity, classes in entity_to_classes.items())
-    luadata.write("./src/addon/entities.lua", output, encoding="utf-8", indent="\t", prefix="return ")
+    luadata.write("./src/mod/entities.lua", output, encoding="utf-8", indent="\t", prefix="return ")
 
 
 def class_definitions():
@@ -56,7 +56,7 @@ def class_definitions():
             "attributes": attributes
         }
 
-    luadata.write("./src/addon/classes.lua", data, encoding="utf-8", indent="\t", prefix="return ")
+    luadata.write("./src/mod/classes.lua", data, encoding="utf-8", indent="\t", prefix="return ")
 
 
 @cache

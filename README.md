@@ -1,5 +1,5 @@
 # factorio2mqtt
-![](src/addon/thumbnail.png?raw=true)
+![](src/mod/thumbnail.png?raw=true)
 
 https://mods.factorio.com/mod/factorio2mqtt
 
