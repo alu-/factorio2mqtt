@@ -51,5 +51,7 @@ local function on_event(event)
 end
 
 for event_name, _ in pairs(defines.events) do
-    script.on_event(event_name, on_event)
+    if event_name ~= "on_tick" then -- todo remove this line, this is just to test easier without console spam
+        script.on_event(event_name, on_event)
+    end
 end

@@ -8,6 +8,16 @@ function has_value (tab, val)
     return false
 end
 
+function has_key(tab, key)
+    for index, _ in pairs(tab) do
+        if index == key then
+            return true
+        end
+    end
+
+    return false
+end
+
 local count = 0
 function get_file_name()
     count = count + 1
