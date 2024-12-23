@@ -7,7 +7,8 @@ VOLUME [ "/script-output" ]
 ENV SCRIPT_OUTPUT_PATH= \
     MQTT_HOST= \
     MQTT_USERNAME= \
-    MQTT_PASSWORD=
+    MQTT_PASSWORD= \
+    CHOKIDAR_USEPOLLING=true
 
 RUN apk add --no-cache tini
 
